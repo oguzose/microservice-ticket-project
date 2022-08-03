@@ -37,10 +37,6 @@ public class Account implements Serializable {
     private String email;
 
     @Setter
-    @Column(value = "birth_date")
-    private LocalDate birthDate;
-
-    @Setter
     @Column(value = "pwd")
     private String password;
 

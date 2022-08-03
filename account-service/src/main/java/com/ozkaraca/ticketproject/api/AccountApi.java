@@ -1,6 +1,6 @@
 package com.ozkaraca.ticketproject.api;
 
-import com.ozkaraca.ticketproject.dto.AccountDto;
+import com.ozkaraca.ticketproject.contract.AccountDto;
 import com.ozkaraca.ticketproject.entity.Account;
 import com.ozkaraca.ticketproject.service.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,8 @@ public class AccountApi {
 
     @PutMapping
     public ResponseEntity<AccountDto> update(@PathVariable("id") String id, @PathVariable("id") AccountDto accountDto) {
-        return ResponseEntity.ok(accountService.update(id, accountDto));
+        return null;
+                //ResponseEntity.ok(accountService.update(id, accountDto));
     }
 
     @DeleteMapping

@@ -1,6 +1,6 @@
 package com.ozkaraca.ticketproject.service;
 
-import com.ozkaraca.ticketproject.dto.AccountDto;
+import com.ozkaraca.ticketproject.contract.AccountDto;
 import com.ozkaraca.ticketproject.entity.Account;
 import com.ozkaraca.ticketproject.repo.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +39,6 @@ public class AccountService {
         Assert.isNull(id, "Id cannot be null");
         Optional<Account> account = accountRepository.findById(id);
         Account accountToUpdate = account.map(it -> {
-            it.setBirthDate(accountDto.getBirthDate());
             it.setName(accountDto.getName());
             it.setSurname(accountDto.getSurname());
             return it;
