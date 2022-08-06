@@ -3,11 +3,13 @@ package com.ozkaraca.ticketproject.service.impl;
 import com.ozkaraca.ticketproject.client.AccountServiceClient;
 import com.ozkaraca.ticketproject.contract.AccountDto;
 import com.ozkaraca.ticketproject.dto.TicketDto;
+import com.ozkaraca.ticketproject.messaging.TicketNotification;
 import com.ozkaraca.ticketproject.model.PriorityType;
 import com.ozkaraca.ticketproject.model.Ticket;
 import com.ozkaraca.ticketproject.model.TicketStatus;
 import com.ozkaraca.ticketproject.model.es.TicketModel;
 import com.ozkaraca.ticketproject.repository.TicketRepository;
+import com.ozkaraca.ticketproject.service.TicketNotificationService;
 import com.ozkaraca.ticketproject.service.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -28,6 +30,8 @@ public class TicketServiceImpl implements TicketService {
     private final ModelMapper modelMapper;
 
     private final AccountServiceClient accountServiceClient;
+
+    private final TicketNotificationService ticketNotificationService;
 
     @Override
     @Transactional
@@ -68,7 +72,7 @@ public class TicketServiceImpl implements TicketService {
         ticketDto.setId(ticket.getId());
 
         // Kuyruga notification yaz
-        //ticketNotificationService.sendToQueue(ticket);
+        ticketNotificationService.sendToQueue(ticket);
         return ticketDto;
     }
 
