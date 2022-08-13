@@ -2,6 +2,7 @@ package com.ozkaraca.ticketproject.model.es;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-//@Document(indexName = "ticket")
+@Document(indexName = "ticket")
 public class TicketModel implements Serializable {
 
     @Id

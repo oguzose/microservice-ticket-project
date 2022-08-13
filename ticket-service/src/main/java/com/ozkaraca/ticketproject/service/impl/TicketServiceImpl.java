@@ -9,6 +9,7 @@ import com.ozkaraca.ticketproject.model.Ticket;
 import com.ozkaraca.ticketproject.model.TicketStatus;
 import com.ozkaraca.ticketproject.model.es.TicketModel;
 import com.ozkaraca.ticketproject.repository.TicketRepository;
+import com.ozkaraca.ticketproject.repository.es.TicketElasticRepository;
 import com.ozkaraca.ticketproject.service.TicketNotificationService;
 import com.ozkaraca.ticketproject.service.TicketService;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class TicketServiceImpl implements TicketService {
 
     private final TicketRepository ticketRepository;
 
-    //private final TicketElasticRepository ticketElasticRepository;
+    private final TicketElasticRepository ticketElasticRepository;
 
     private final ModelMapper modelMapper;
 
@@ -66,7 +67,7 @@ public class TicketServiceImpl implements TicketService {
                 .ticketDate(ticket.getTicketDate()).build();
 
         // elastic kaydet
-        //ticketElasticRepository.save(ticketEsModel);
+        ticketElasticRepository.save(ticketEsModel);
 
         // olusan nesneyi döndür
         ticketDto.setId(ticket.getId());
